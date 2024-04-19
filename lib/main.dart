@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:roomlights/toggle.dart';
+import 'package:roomlights/home_screen.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home: Togglelight(),
+  runApp(MaterialApp(
+    home: HomePage(),
   ));
 }
 
