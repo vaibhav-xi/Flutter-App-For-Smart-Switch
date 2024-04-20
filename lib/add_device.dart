@@ -1,6 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddDevice extends StatefulWidget {
   const AddDevice({super.key});
@@ -13,6 +15,18 @@ class _AddDeviceState extends State<AddDevice> {
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ipController = TextEditingController();
+  File? _image;
+
+  Future<void> _getImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +41,6 @@ class _AddDeviceState extends State<AddDevice> {
             padding: const EdgeInsets.only(right: 16.0), // Add right padding to the action
             child: GestureDetector(
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   PageTransition(
-                //     type: PageTransitionType.fade,
-                //     child: const AddDevice(),
-                //   )
-                // );
               },
               child: const Icon(Icons.done),
             ),
@@ -80,6 +87,27 @@ class _AddDeviceState extends State<AddDevice> {
                   ),
                 ),
               ),
+              const SizedBox(height: 20,),
+              Container(
+                padding: const EdgeInsets.all(10),      
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    stops: [0.0 , 0.5, 1.0],
+                    colors: [Colors.white, Colors.white, Color.fromARGB(255, 238, 238, 238)]
+                  )  
+                ),
+                child: RawMaterialButton(
+                  onPressed: () {},
+                  shape: const CircleBorder(),
+                  elevation: 2.0,
+                  fillColor: Colors.white,
+                  padding: const EdgeInsets.all(18.0),
+                  child: const Text("Image"),
+                )
+              )
             ],
           ),
         ),
