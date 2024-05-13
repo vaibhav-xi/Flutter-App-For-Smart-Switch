@@ -35,7 +35,7 @@ class _AddDeviceState extends State<AddDevice> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text("Add Device"),
+        title: const Text("New Device"),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 16.0), // Add right padding to the action

@@ -28,7 +28,7 @@ Widget addDevice() {
             child: Row(
               children: [
                 Text(
-                  "Add Device  ",
+                  "New Device  ",
                   style: GoogleFonts.rubik(fontSize: 20, color: Colors.grey),
                 ),
                 const Icon(
